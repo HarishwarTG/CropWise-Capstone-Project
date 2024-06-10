@@ -1,6 +1,7 @@
 from pipeline.predict import predict_result
 import pandas as pd
 from flask import Flask, request, render_template
+import numpy as np
 
 app = Flask(__name__)
 
