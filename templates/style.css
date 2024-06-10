@@ -1,16 +1,16 @@
 :root {
-    --font-family: 'Arial', sans-serif;
+    --font-family: 'Poppins', sans-serif;
     --background-color: #f0f0f0;
     --container-bg-color: #fff;
-    --container-max-width: 600px;
-    --container-padding: 20px;
+    --container-max-width: 650px;
+    --container-padding: 80px;
     --container-border-radius: 5px;
     --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    --heading-color: #333;
+    --heading-color: #2bc59c;
     --paragraph-color: #777;
-    --label-width: 120px;
+    --label-width: 650px;
     --label-margin-right: 10px;
-    --input-padding: 5px 10px;
+    --input-padding: 8px 20px;
     --input-border: 1px solid #ccc;
     --input-border-radius: 3px;
     --range-background: #ddd;
@@ -47,9 +47,9 @@ body {
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
+    text-align: top;
+    margin-bottom: 2px;
+    font-size: 30px;
     color: var(--heading-color);
 }
 

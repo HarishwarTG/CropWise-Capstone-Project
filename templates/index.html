@@ -140,6 +140,21 @@
             left: 20px;
         }
 
+        #github-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .project-content {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            max-width: 300px;
+            text-align: left;
+            font-size: 20px;
+        }
+
         footer {
             position: absolute;
             bottom: 20px;
@@ -166,21 +181,33 @@
             }
 
             .input-group label {
-                width: 100%;
+                width: 200%;
             }
 
             button {
                 padding: 15px;
+            }
+
+            .project-content {
+                position: static;
+                max-width: 100%;
+                margin-bottom: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div id="logo">
-        <img src="https://github.com/HarishwarTG/CropWise-Capstone-Project/blob/main/templates/GL-2.png?raw=true" alt="Logo" width="200">
+        <img src="https://github.com/HarishwarTG/CropWise-Capstone-Project/blob/main/templates/GL-2.png?raw=true" alt="Logo" width="250">
+    </div>
+    <div id="github-logo">
+        <a href="https://github.com/HarishwarTG/CropWise-Capstone-Project/tree/main">
+            <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub Logo" width="60">
+        </a>
     </div>
     <div class="container">
-        <h1>CropWise:) Future-Proof Your Farming </h1>
+        <img src="https://github.com/HarishwarTG/CropWise-Capstone-Project/blob/main/templates/CropWise_transparent.png?raw=true" alt="CropWise Logo" width="300">
+        <h1>CropWise:) Future-Proof Your Farming</h1>
         <p>Predict your crop and forecast price based on soil nutrient composition and climate conditions.</p>
         <form action="{{ url_for('predict') }}" method="post" id="prediction-form">
             <div class="input-group">
@@ -222,6 +249,10 @@
                 <h2>{{ result }}</h2>
             {% endif %}
         </div>
+    </div>
+    <div class="project-content">
+        <h3>About CropWise</h3>
+        <p>CropWise helps farmers future-proof their farming by predicting the best crop to grow based on soil nutrient composition and climate conditions. Enter the values for nitrogen, phosphorus, potassium, temperature, humidity, pH, and rainfall to get a crop recommendation and price forecast.</p>
     </div>
     <script>
         function updateTempValue(value) {
