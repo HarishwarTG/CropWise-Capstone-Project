@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --font-family: 'Arial', sans-serif;
+            --background-color: #f0f8ff;
+            --container-bg-color: #fff;
+            --container-max-width: 600px;
+            --container-padding: 20px;
+            --container-border-radius: 10px;
+            --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            --heading-color: #007bff;
+            --paragraph-color: #555;
+            --label-width: 100px;
+            --label-margin-right: 10px;
+            --input-padding: 5px;
+            --input-border: 1px solid #007bff;
+            --input-border-radius: 5px;
+            --range-background: #ddd;
+            --range-thumb-width: 15px;
+            --range-thumb-height: 15px;
+            --range-thumb-bg: #007bff;
+            --button-bg: #007bff;
+            --button-color: #fff;
+            --button-padding: 10px 20px;
+            --button-border-radius: 5px;
+            --button-hover-bg: #0056b3;
+            --result-container-margin-top: 20px;
+            --result-container-padding: 15px;
+            --result-container-border: 1px solid #ccc;
+            --result-container-border-radius: 5px;
+            --result-heading-font-size: 18px;
+            --result-heading-margin-bottom: 10px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: var(--container-padding);
+            background-color: var(--background-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            width: 100%;
+            padding: var(--container-padding);
+            border-radius: var(--container-border-radius);
+            background-color: var(--container-bg-color);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--heading-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        p {
+            color: var(--paragraph-color);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-group label {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-group input[type="number"],
+        .input-group input[type="month"],
+        .input-group input[type="range"] {
+            width: 100%;
+            padding: var(--input-padding);
+            margin-bottom: 5px;
+            border: var(--input-border);
+            border-radius: var(--input-border-radius);
+        }
+
+        .input-group input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 10px;
+            background: var(--range-background);
+            outline: none;
+            border-radius: 5px;
+        }
+
+        .input-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: var(--range-thumb-width);
+            height: var(--range-thumb-height);
+            background: var(--range-thumb-bg);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: var(--button-bg);
+            color: var(--button-color);
+            padding: var(--button-padding);
+            border: none;
+            border-radius: var(--button-border-radius);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--button-hover-bg);
+        }
+
+        button:focus {
+            outline: 2px dashed var(--button-hover-bg);
+            outline-offset: 2px;
+        }
+
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        #result-container {
+            margin-top: var(--result-container-margin-top);
+            padding: var(--result-container-padding);
+            border: var(--result-container-border);
+            border-radius: var(--result-container-border-radius);
+        }
+
+        #result-container h2 {
+            text-align: center;
+            font-size: var(--result-heading-font-size);
+            margin-bottom: var(--result-heading-margin-bottom);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .input-group label {
+                width: 100%;
+            }
+
+            button {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="logo">
+        <img src="logo.png" alt="Logo" width="100">
+    </div>
+    <div class="container">
+        <h1>Crop and price Prediction</h1>
+        <p>Predict your crop and forecast price based on climate and soil conditions.</p>
+        <form action="{{ url_for('predict') }}" method="post" id="prediction-form">
+            <div class="input-group">
+                <label for="N">Nitrogen (kg/ha):</label>
+                <input type="number" id="N" name="N" min="0" max="140" step="0.1" required>
+            </div>
+            <div class="input-group">
+                <label for="P">Phosphorus (kg/ha):</label>
+                <input type="number" id="P" name="P" min="5" max="145" step="0.1" required>
+            </div>
+            <div class="input-group">
+                <label for="K">Potassium (kg/ha):</label>
+                <input type="number" id="K" name="K" min="5" max="205" step="0.1" required>
+            </div>
+            <div class="input-group">
+                <label for="temp">Temperature (°C): <span id="temp-value"></span></label>
+                <input type="range" min="0" max="50" step="0.1" id="temp" name="temp" oninput="updateTempValue(this.value)">
+            </div>
+            <div class="input-group">
+                <label for="humidity">Humidity (%): <span id="humidity-value"></span></label>
+                <input type="range" min="0" max="100" step="0.1" id="humidity" name="humidity" oninput="updateHumidityValue(this.value)">
+            </div>
+            <div class="input-group">
+                <label for="ph">pH:</label>
+                <input type="number" id="ph" name="ph" min="0" max="14" step="0.1" required>
+            </div>
+            <div class="input-group">
+                <label for="rainfall">Rainfall (mm):</label>
+                <input type="number" id="rainfall" name="rainfall" min="20" max="298.56" step="0.1" required>
+            </div>
+            <div class="input-group">
+                <label for="date">Date (YYYY-MM):</label>
+                <input type="month" id="date" name="date" min="2024-01" max="2024-07" required>
+            </div>
+            <button type="submit">Predict Crop and Price</button>
+        </form>
+        <div id="result-container">
+            {% if result %}
+                <h2>{{ result }}</h2>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        function updateTempValue(value) {
+            document.getElementById('temp-value').textContent = value + " °C";
+        }
+        function updateHumidityValue(value) {
+            document.getElementById('humidity-value').textContent = value + " %";
+        }
+    </script>
+</body>
+</html>

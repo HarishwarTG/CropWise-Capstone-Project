@@ -1,0 +1,12 @@
+sagemaker
+scikit-learn
+pandas
+numpy
+xgboost
+ipykernel
+matplotlib
+seaborn
+statsmodels
+flask
+streamlit
+flask_cors
