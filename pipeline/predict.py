@@ -14,7 +14,7 @@ def predict_result(input_data : list  , date_data : pd.Timestamp) -> str:
     
     price=forecast_price(crop[0],date_data)
     
-    result = (f'The best crop to grow with given climate conditions and soil conditions is {crop[0]}. '
+    result = (f'The best crop to grow with given climate and soil conditions is {crop[0]}. '
               f'The forecasted price for {crop[0]} is ₹{price} per quintal on {date_data}.')
     
     return result
