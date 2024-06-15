@@ -1,6 +1,6 @@
 <h1 align="center" id="title">CropWise-Capstone-Project</h1>
 
-<p align="center"><img src="https://github.com/HarishwarTG/CropWise-Capstone-Project/blob/main/templates/CropWise_transparent.png?raw=true" alt="project-image"></p>
+<img src="https://socialify.git.ci/HarishwarTG/CropWise-Capstone-Project/image?font=Raleway&language=1&name=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Light" alt="CropWise-Capstone-Project" width="640" height="320" />
 
 ## Farm Like a Fortune Teller: Machine Learning for Crops
 
@@ -26,3 +26,7 @@ Grow smarter, not harder! We use machine learning to predict crop yields and pri
 
 This journey's just begun. Stay tuned to predict your harvest (and its price!) with machine learning by your side.
 
+
+# Quick Start Demo
+
+![Demo Preview](https://github.com/HarishwarTG/CropWise-Capstone-Project/blob/main/templates/Untitled_Project_V1.gif)
