@@ -3,7 +3,7 @@ name: workflow
 on:
   push:
     branches:
-      - main
+      - Main  #rename to main for CICD
     paths-ignore:
       - 'README.md'
 

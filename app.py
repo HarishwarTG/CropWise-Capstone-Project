@@ -2,7 +2,8 @@ from pipeline.predict import predict_result
 import pandas as pd
 from flask import Flask, request, render_template
 
-app = Flask(__name__)
+application = Flask(__name__)
+app = application
 
 @app.route('/', methods=['GET', 'POST'])
 def predict():
@@ -35,4 +36,4 @@ def predict():
         return render_template('index.html', result=result)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080 , debug=True)
+    app.run(host="0.0.0.0")
