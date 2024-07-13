@@ -9,3 +9,4 @@ statsmodels
 flask
 streamlit
 flask_cors
+tensorflow

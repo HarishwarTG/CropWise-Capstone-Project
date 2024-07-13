@@ -32,6 +32,6 @@ def forecast_price(label: str, month: pd.Timestamp) -> float:
     return price
 
 
-# price = forecast_price('mango', pd.Timestamp('2024-04-01'))
+# price = forecast_price('apple', pd.Timestamp('2024-04-01'))
 
 # print(price)
